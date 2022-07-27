@@ -45,6 +45,7 @@ class HomeController extends Controller
   public function index()
   {
     try {
+
       $announcement = Announcement::where('status', 'show')->latest()->limit(6)->get();
       $agendas = Agenda::where('status', 'show')->latest()->limit(3)->get();
       $blog = Article::where('status', 'show')->latest()->limit(3)->get();
@@ -89,6 +90,8 @@ class HomeController extends Controller
   public function profile($slug)
   {
     try {
+      $id_kecamatan = $this->id_kecamatan;
+      dd($this->id_kecamatan);
       $article = Article::where('status', 'show')->latest()->limit(5)->get();
       $announcement = Announcement::where('status', 'show')->limit(5)->get();
       $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
